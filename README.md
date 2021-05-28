@@ -77,7 +77,7 @@ char address[25];
 char street[] = "Rheingasse 5";
 char city[] = "Basel";
 char country[] = "Switzerland";
-if (!pstr_vcat(address, 35, street, ", ", city, ", ", country, NULL)) {
+if (!pstr_vcat(address, 25, street, ", ", city, ", ", country, NULL)) {
   // `address` is not big enough, so we'll end up here, and you can do something to handle
   // the problem
   // `address` is now "\0"
@@ -93,7 +93,7 @@ If you'd like the standard, old-fashioned two-string concatenation, there's also
 ```c
 char message[13];
 char greeting[] = "Hello";
-assert(pstr_cat(message, 15, greeting, " there!"));
+assert(pstr_cat(message, 13, greeting, " there!"));
 // `message` now contains "Hello there!\0"
 // We had just enough space to fit the "\0" in
 ```
