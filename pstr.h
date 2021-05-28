@@ -87,6 +87,14 @@ bool pstr_ends_with(char const *str, char const *prefix);
 bool pstr_copy(char *dest, size_t const dest_size, char const *src);
 
 /*!
+  Tries to copy `n` characters from `src` into `dest`, requiring `n + 1` bytes in `dest`,
+  to allow for the NULL terminator. If successful, returns true.
+  If it won't fit, or there aren't enough characters in `src`,
+  it does not copy anything, and returns false.
+*/
+bool pstr_copy_n(char *dest, size_t const dest_size, char const *src, size_t const n);
+
+/*!
   Tries to add `src` onto the end of `dest`. If there is enough space, the copy
   proceeds and true is returned. If there isn't enough space, nothing is copied
   and false is returned.

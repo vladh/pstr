@@ -238,6 +238,22 @@ static void test_pstr_copy() {
 }
 
 
+static void test_pstr_copy_n() {
+  print_test_group("test_pstr_copy_n()");
+  bool did_succeed;
+  size_t const dest_size = 6;
+  char dest[dest_size];
+  char const src_short[] = {'h', 'e', 'y', 0};
+
+  memset(dest, 0, dest_size);
+  did_succeed = pstr_copy_n(dest, dest_size, src_short, 2);
+  run_test(
+    "The first two characters are successfully copied",
+    did_succeed && memcmp(dest, "he\0", 3) == 0
+  );
+}
+
+
 static void test_pstr_cat() {
   print_test_group("test_pstr_cat()");
   bool did_succeed;
@@ -727,6 +743,7 @@ int main(int argc, char **argv) {
   test_pstr_ends_with_char();
   test_pstr_ends_with();
   test_pstr_copy();
+  test_pstr_copy_n();
   test_pstr_cat();
   test_pstr_vcat();
   test_pstr_split_on_first_occurrence();
@@ -741,6 +758,5 @@ int main(int argc, char **argv) {
   test_pstr_rtrim_char();
   test_pstr_trim_char();
   test_pstr_from_int64();
-
   print_test_statistics();
 }

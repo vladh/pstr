@@ -107,6 +107,21 @@ bool pstr_copy(char *dest, size_t const dest_size, char const *src) {
 }
 
 
+bool pstr_copy_n(char *dest, size_t const dest_size, char const *src, size_t const n) {
+  size_t const src_len = pstr_len(src);
+
+  // If there's no room, return false
+  if (src_len < n || dest_size < n + 1) {
+    return false;
+  }
+
+  memcpy(dest, src, n);
+  dest[n] = '\0';
+
+  return true;
+}
+
+
 bool pstr_cat(char *dest, size_t const dest_size, char const *src) {
   size_t const src_len = pstr_len(src);
   size_t const dest_len = pstr_len(dest);

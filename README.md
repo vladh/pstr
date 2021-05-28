@@ -113,13 +113,26 @@ buffer untouched.
 
 ```c
 char message[15];
-memset(message, "hello\0", 6);
+memcpy(message, "hello\0", 6);
 
 if (!pstr_copy(message, 15, "welcome!")) {
   // Whoops, couldn't make the message
 }
 
 // We had enough space, so `message` now contains `"welcome!\0"`
+```
+
+You can also choose to only copy a certain number of characters with `pstr_copy_n`.
+
+```c
+char message[15];
+memcpy(message, "hello\0", 6);
+
+if (!pstr_copy-n(message, 15, "welcome!", 2)) {
+  // Whoops, couldn't make the message
+}
+
+// `message` now contains "we\0"
 ```
 
 ### Splitting
