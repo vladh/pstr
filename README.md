@@ -38,7 +38,8 @@ functions make this a little bit simpler. For example:
 pstr_vcat(dest, dest_size, " Hello", " there ", name, "!", NULL);
 ```
 
-pstr also comes with [tests](#running-the-tests), for what that's worth.
+pstr also comes with [tests](pstr_test.c) which you can run with `make run-test`, for
+what that's worth.
 
 ## Documentation
 
@@ -266,10 +267,6 @@ functions with `strcat`.
 **Why is it called pstr?**
 
 I wrote it for my game engine [Peony](https://vladh.net).
-
-## Running the tests
-
-You can easily run the tests using `make run-test`.
 
 ## License
 
