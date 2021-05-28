@@ -59,7 +59,7 @@ its size, as well as a list of strings, followed by `NULL`. Remember to write th
 at the end or bad things will happen. As with all pstr functions, the `"\0"` terminator
 is added automatically to the string.
 
-```
+```c
 char address[35];
 char street[] = "Rheingasse 5";
 char city[] = "Basel";
@@ -72,7 +72,7 @@ Like most pstr methods, `pstr_vcat()` returns a `bool` which tells you whether t
 operation succeeded or not. `pstr_vcat()` returns `false` if there wasn't enough space,
 and you should check for this.
 
-```
+```c
 char address[25];
 char street[] = "Rheingasse 5";
 char city[] = "Basel";
@@ -90,7 +90,7 @@ Most pstr methods leave the destination buffer unchanged if an operation failed.
 If you'd like the standard, old-fashioned two-string concatenation, there's also
 `pstr_cat()`.
 
-```
+```c
 char message[13];
 char greeting[] = "Hello";
 assert(pstr_cat(message, 15, greeting, " there!"));
@@ -104,7 +104,7 @@ assert(pstr_cat(message, 15, greeting, " there!"));
 only performs the copy if there is enough space, otherwise it leaves the destination
 buffer untouched.
 
-```
+```c
 char message[15];
 memset(message, "hello\0", 6);
 if (!pstr_copy(message, 15, "welcome!")) {
@@ -118,7 +118,7 @@ if (!pstr_copy(message, 15, "welcome!")) {
 `pstr_split_on_first_occurrence()` will split a string into two parts, on the first
 occurrence of a separator.
 
-```
+```c
 char list[15];
 memcpy(list, "cats,seashells\0", 15);
 
@@ -146,7 +146,7 @@ are exclusive, so slices take the form `[start, end)`. The string is modified in
 These methods can fail if you give them indices that are out of range, in which case they
 return `false`, so please check the returned value.
 
-```
+```c
 char message[15];
 memcpy(message, ",,Mallard!\0", 11);
 pstr_slice_to(message, 9); // ",,Mallard\0"
@@ -160,7 +160,7 @@ You can trim whitespace, or any specific character, from the start, end, or star
 of a string. The string is changed in-place. These methods cannot fail so they return
 nothing.
 
-```
+```c
 char message[15];
 
 memcpy(message, " Strasbourg\n");
@@ -182,7 +182,7 @@ parameter. Your destination buffer should be at least 21 characters long, to fit
 possible 64-bit strings. If there isn't enough space in your destination buffer, it will
 return false, and set your destination buffer to `"\0"`.
 
-```
+```c
 char number[21];
 size_t number_length;
 pstr_from_int64(number, 21, -4815162342, &number_length);
@@ -193,16 +193,16 @@ pstr_from_int64(number, 21, -4815162342, &number_length);
 
 You can easily check whether two strings are equal.
 
-```
+```c
 char name[] = "Bobby";
-if (pstr_eq(name, "Bobby)) {
+if (pstr_eq(name, "Bobby")) {
   // ...
 }
 ```
 
 You can also check if a string is empty.
 
-```
+```c
 char name[] = "";
 if (pstr_is_empty(name)) {
   // ...
@@ -212,7 +212,7 @@ if (pstr_is_empty(name)) {
 And there's also a method to get the length of a string. It just calls `strlen()`, but
 it's included for visual consistency.
 
-```
+```c
 size_t len = pstr_len("Locarno");
 ```
 
@@ -220,7 +220,7 @@ size_t len = pstr_len("Locarno");
 
 You can easily check if a string starts or ends with a character or another string.
 
-```
+```c
 pstr_starts_with_char("Magpie!", 'M'); // true
 pstr_starts_with("Magpie!", "Mag"); // true
 pstr_ends_with_char("Magpie!", 'e'); // false
