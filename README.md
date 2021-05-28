@@ -64,7 +64,9 @@ char address[35];
 char street[] = "Rheingasse 5";
 char city[] = "Basel";
 char country[] = "Switzerland";
+
 pstr_vcat(address, 35, street, ", ", city, ", ", country, NULL);
+
 // `address` now contains "Rheingasse 5, Basel, Switzerland\0"
 ```
 
@@ -77,11 +79,13 @@ char address[25];
 char street[] = "Rheingasse 5";
 char city[] = "Basel";
 char country[] = "Switzerland";
+
 if (!pstr_vcat(address, 25, street, ", ", city, ", ", country, NULL)) {
   // `address` is not big enough, so we'll end up here, and you can do something to handle
   // the problem
   // `address` is now "\0"
 }
+
 ```
 
 Most pstr methods leave the destination buffer unchanged if an operation failed.
@@ -93,7 +97,9 @@ If you'd like the standard, old-fashioned two-string concatenation, there's also
 ```c
 char message[13];
 char greeting[] = "Hello";
+
 assert(pstr_cat(message, 13, greeting, " there!"));
+
 // `message` now contains "Hello there!\0"
 // We had just enough space to fit the "\0" in
 ```
@@ -107,9 +113,11 @@ buffer untouched.
 ```c
 char message[15];
 memset(message, "hello\0", 6);
+
 if (!pstr_copy(message, 15, "welcome!")) {
   // Whoops, couldn't make the message
 }
+
 // We had enough space, so `message` now contains `"welcome!\0"`
 ```
 
@@ -124,6 +132,7 @@ memcpy(list, "cats,seashells\0", 15);
 
 char first_item[15];
 char second_item[15];
+
 if (!pstr_split_on_first_occurrence(
   list,
   first_item, 15,
@@ -149,6 +158,7 @@ return `false`, so please check the returned value.
 ```c
 char message[15];
 memcpy(message, ",,Mallard!\0", 11);
+
 pstr_slice_to(message, 9); // ",,Mallard\0"
 pstr_slice_from(message, 2); // "Mallard!\0"
 pstr_slice(message, 2, 9); // "Mallard\0"
@@ -185,7 +195,9 @@ return false, and set your destination buffer to `"\0"`.
 ```c
 char number[21];
 size_t number_length;
+
 pstr_from_int64(number, 21, -4815162342, &number_length);
+
 // `number` is now "-4815162342"
 ```
 
