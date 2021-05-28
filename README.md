@@ -50,7 +50,7 @@ It works with standard C strings, so you can simply create a stack-allocated str
 you normally would, e.g. `char address[30];`.
 
 Usage instructions are included below, and you can find documentation of all functions in
-[pstr.h](pstr/pstr.h).
+[pstr.h](pstr.h).
 
 ### Concatenation
 
