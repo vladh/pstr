@@ -281,17 +281,6 @@ functions with `strcat`.
 
 I wrote it for my game engine [Peony](https://vladh.net).
 
-## License
-
-```
-pstr string functions
-
-The author disclaims copyright to this source code.
-In place of a legal notice, here is a blessing:
-
-May you do good and not evil.
-May you find forgiveness for yourself and forgive others.
-May you share freely, never taking more than you give.
-```
+## Credits
 
 Icon by [irasutoya](https://www.irasutoya.com)
