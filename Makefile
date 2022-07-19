@@ -1,3 +1,6 @@
+# © 2022 Vlad-Stefan Harbuz <vlad@vladh.net>
+# SPDX-License-Identifier: blessing
+
 .PHONY: test run
 
 test:

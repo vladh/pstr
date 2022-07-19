@@ -1,3 +1,8 @@
+<!--
+© 2022 Vlad-Stefan Harbuz <vlad@vladh.net>
+SPDX-License-Identifier: blessing
+-->
+
 ![pstr string functions](images/saihou_itodama_sm.png)
 
 # pstr — a set of cautious and easy-to-use C string functions
