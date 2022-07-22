@@ -1,5 +1,5 @@
 <!--
-© 2022 Vlad-Stefan Harbuz <vlad@vladh.net>
+© 2021 Vlad-Stefan Harbuz <vlad@vladh.net>
 SPDX-License-Identifier: blessing
 -->
 
